@@ -1,0 +1,31 @@
+.ex-container {
+    text-align: center;
+    margin-top: 50px;
+    color: white;
+  }
+  
+  .code-input {
+    width: 80%;
+    height: 100px;
+    margin-top: 10px;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 10px;
+    font-family: monospace;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .result {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  

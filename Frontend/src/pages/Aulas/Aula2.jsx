@@ -1,6 +1,6 @@
 import "./Aula.css";
 
-function Aula1() {
+function Aula2() {
   return (
     <div className="page">
       <h1>Aula 2</h1>
@@ -9,4 +9,4 @@ function Aula1() {
   );
 }
 
-export default Aula1;
+export default Aula2;

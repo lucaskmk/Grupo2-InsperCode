@@ -1,7 +1,135 @@
 .header {
-    background: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 98%;
+  background: #f43636;
+  color: black;
+  padding: 0.625rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container geral */
+.header-container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+/* Home alinhado corretamente */
+.home-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.home-button {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* Aulas + Perfil na direita */
+.menu-profile-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Botão Aulas */
+.menu-button {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+/* Ícone de Perfil */
+.profile-icon {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Ajuste para posicionar o dropdown exatamente abaixo do botão */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #f53a3a;
+  color: rgb(255, 255, 255);
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+  min-width: 10rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu p {
+  cursor: pointer;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.dropdown-menu p:hover {
+  background: #e03b3b;
+}
+
+/* Espaço no topo para não cobrir o conteúdo */
+.page {
+  padding-top: 3.75rem;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
   }
-  
+
+  .menu-profile-container {
+    gap: 1rem;
+  }
+
+  .home-button {
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .menu-button {
+    font-size: 1rem;
+  }
+
+  .profile-icon {
+    font-size: 1.25rem;
+    padding: 0.5rem;
+  }
+
+  .dropdown-menu {
+    min-width: 8rem;
+    top: 100%;
+    right: 0;
+  }
+
+  .dropdown-menu p {
+    padding: 0.375rem;
+  }
+}

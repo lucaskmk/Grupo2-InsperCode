@@ -1,13 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 function Home() {
-  const navigate = useNavigate(); // Hook do React Router para navegação
-
   return (
-    <div className="home">
+    <div className="page">
       <h1>Página Inicial</h1>
-      <button onClick={() => navigate("/ex")}>Ir para Teste de Função</button>
+      <p>Bem-vindo ao site!</p>
     </div>
   );
 }

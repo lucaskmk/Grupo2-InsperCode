@@ -1,18 +1,23 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from database import Base, engine
+import auth
 from pydantic import BaseModel
-import test_cases  # Importando o módulo de testes
 
 app = FastAPI()
 
-# Configuração de CORS para permitir chamadas do frontend
+Base.metadata.create_all(bind=engine)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Em produção, restrinja para domínios específicos
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth.router, prefix="/api", tags=["Auth"])
+
 
 class CodeRequest(BaseModel):
     code: str

@@ -2,11 +2,9 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -24,12 +22,13 @@ a:hover {
 
 body {
   margin: 0;
+  padding-top: 70px;  /* Garante espaço para o header */
   display: flex;
-  justify-content: center;  /* Centraliza horizontalmente */
-  align-items: center;  /* Centraliza verticalmente */
-  min-height: 100vh;  /* Faz ocupar a altura inteira da tela */
-  text-align: center;  /* Centraliza textos dentro dos elementos */
-  flex-direction: column; /* Garante que os elementos fiquem empilhados */
+  justify-content: flex-start;  /* Ajusta para que o conteúdo comece abaixo do header */
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  flex-direction: column;
 }
 
 /* Ajuste para garantir que cada página também fique centralizada */

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import test_cases  # Importando o módulo de testes
 
 app = FastAPI()
 
@@ -15,6 +16,7 @@ app.add_middleware(
 
 class CodeRequest(BaseModel):
     code: str
+    test_type: str  # Tipo de teste (exemplo: "soma_teste", "multiplicacao_teste", "verdadeiro_falso_teste")
 
 @app.post("/api/test-code")
 def test_code(request: CodeRequest):
@@ -32,39 +34,13 @@ def test_code(request: CodeRequest):
                 "erros": []
             }
 
-        # Lista de casos de teste (pares de números e resultado esperado)
-        test_cases = [
-            ((1, 2), 3),
-            ((3, 5), 8),
-            ((-1, 1), 0),
-            ((10, 20), 30),
-            ((0, 0), 0)
-        ]
+        # Obtém a função de teste baseada no tipo enviado pelo usuário
+        test_function = getattr(test_cases, request.test_type, None)
+        if not test_function:
+            return {"result": f"❌ Erro: Teste '{request.test_type}' não encontrado."}
 
-        erros = []
-
-        for (a, b), esperado in test_cases:
-            try:
-                saida = local_scope["teste"](a, b)
-                if saida != esperado:
-                    erros.append({
-                        "entrada": f"teste({a}, {b})",
-                        "saida": saida,
-                        "esperado": esperado
-                    })
-            except Exception as e:
-                erros.append({
-                    "entrada": f"teste({a}, {b})",
-                    "saida": f"Erro: {str(e)}",
-                    "esperado": esperado
-                })
-
-        if not erros:
-            return {"result": "✅ Função correta!"}
-        else:
-            return {
-                "result": f"❌ Função incorreta. \n -> teste({erros})"
-            }
+        # Executa os testes com a função do usuário
+        return test_function(local_scope["teste"])
 
     except Exception as e:
         return {

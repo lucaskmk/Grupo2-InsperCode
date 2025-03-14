@@ -1,9 +1,8 @@
 .home {
-    text-align: center;
-    margin-top: 50px;
-    color: white;
-    background-color: #222;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
+  text-align: center;
+  margin-top: 80px; /* Garante espaço para o header */
+  color: white;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+}

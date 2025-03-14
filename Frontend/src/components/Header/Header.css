@@ -4,7 +4,7 @@
   left: 0;
   width: 98%;
   background: #f43636;
-  color: black;
+  color: white;
   padding: 0.625rem 1.25rem;
   display: flex;
   justify-content: space-between;
@@ -34,7 +34,7 @@
 .home-button {
   background: none;
   border: none;
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -51,7 +51,7 @@
 .menu-button {
   background: none;
   border: none;
-  color: black;
+  color: white;
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.5rem 1rem;
@@ -61,7 +61,7 @@
 .profile-icon {
   background: none;
   border: none;
-  color: black;
+  color: white;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
@@ -73,7 +73,7 @@
   top: 100%;
   right: 0;
   background: #f53a3a;
-  color: rgb(255, 255, 255);
+  color: white;
   padding: 0.625rem;
   border-radius: 0.3125rem;
   display: flex;

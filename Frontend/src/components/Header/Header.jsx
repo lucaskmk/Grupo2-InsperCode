@@ -30,7 +30,7 @@ function Header() {
       <div className="home-container">
         {location.pathname !== "/" && (
           <button className="home-button" onClick={() => navigate("/")}>
-            🏠 Home
+            🏠 Voltar ao inicio
           </button>
         )}
       </div>

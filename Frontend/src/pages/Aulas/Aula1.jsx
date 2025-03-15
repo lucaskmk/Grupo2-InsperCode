@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Aula.css";
+import Traducao from "../../components/Traducao/Traducao";
 
 function Aula1() {
   const perguntas = [
@@ -33,52 +34,55 @@ function Aula1() {
   };
 
   return (
-    <div className="page">
-      <h1>Aula 1</h1>
-      <h2>Operações</h2>
-      <p>Como funcionam as operações no Python?</p>
-      <p>
-        Cada operação matemática na linguagem Python possui a sua maneira de ser
-        escrita, podendo em alguns casos não serem representadas pelo seu símbolo
-        "tradicional" da linguagem matemática. Na tabela abaixo se encontram as
-        maneiras corretas de escrever as operações matemáticas básicas dentro do
-        Python que vamos precisar ao longo do curso (ou que são mais utilizadas no
-        nosso dia-a-dia).
-      </p>
-      <img src="src/img/aula1.png" alt="" />
+    <div className="page aula-page">
+      <Traducao />
+      <div className="content-container">
+        <h1>Aula 1</h1>
+        <h2>Operações</h2>
+        <p>Como funcionam as operações no Python?</p>
+        <p>
+          Cada operação matemática na linguagem Python possui a sua maneira de ser
+          escrita, podendo em alguns casos não serem representadas pelo seu símbolo
+          "tradicional" da linguagem matemática. Na tabela abaixo se encontram as
+          maneiras corretas de escrever as operações matemáticas básicas dentro do
+          Python que vamos precisar ao longo do curso (ou que são mais utilizadas no
+          nosso dia-a-dia).
+        </p>
+        <img src="src/img/aula1.png" alt="Aula 1" className="aula-image" />
 
-      <h2>Verdadeiro ou Falso</h2>
-      <p>Marque V para verdadeiro e F para falso:</p>
+        <h2>Verdadeiro ou Falso</h2>
+        <p>Marque V para verdadeiro e F para falso:</p>
 
-      {perguntas.map((pergunta) => (
-        <div key={pergunta.id} className="question">
-          <p>{pergunta.texto}</p>
-          <label>
-            <input
-              type="radio"
-              name={`resposta-${pergunta.id}`}
-              value="V"
-              onChange={() => handleChange(pergunta.id, "V")}
-              checked={respostas[pergunta.id] === "V"}
-            />
-            V
-          </label>
-          <label>
-            <input
-              type="radio"
-              name={`resposta-${pergunta.id}`}
-              value="F"
-              onChange={() => handleChange(pergunta.id, "F")}
-              checked={respostas[pergunta.id] === "F"}
-            />
-            F
-          </label>
-        </div>
-      ))}
+        {perguntas.map((pergunta) => (
+          <div key={pergunta.id} className="question">
+            <p>{pergunta.texto}</p>
+            <label>
+              <input
+                type="radio"
+                name={`resposta-${pergunta.id}`}
+                value="V"
+                onChange={() => handleChange(pergunta.id, "V")}
+                checked={respostas[pergunta.id] === "V"}
+              />
+              V
+            </label>
+            <label>
+              <input
+                type="radio"
+                name={`resposta-${pergunta.id}`}
+                value="F"
+                onChange={() => handleChange(pergunta.id, "F")}
+                checked={respostas[pergunta.id] === "F"}
+              />
+              F
+            </label>
+          </div>
+        ))}
 
-      <button onClick={verificarRespostas}>Verificar Respostas</button>
+        <button onClick={verificarRespostas}>Verificar Respostas</button>
 
-      {resultado && <p className="resultado">{resultado}</p>}
+        {resultado && <p className="resultado">{resultado}</p>}
+      </div>
     </div>
   );
 }

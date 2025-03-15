@@ -22,16 +22,15 @@ a:hover {
 
 body {
   margin: 0;
-  padding-top: 70px;  /* Garante espaço para o header */
+  padding-top: 3.5rem;  
   display: flex;
-  justify-content: flex-start;  /* Ajusta para que o conteúdo comece abaixo do header */
+  justify-content: flex-start; 
   align-items: center;
   min-height: 100vh;
   text-align: center;
   flex-direction: column;
 }
 
-/* Ajuste para garantir que cada página também fique centralizada */
 .page {
   display: flex;
   flex-direction: column;

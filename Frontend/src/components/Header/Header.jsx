@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
+import logo from "./logo.jpg"; 
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -26,28 +26,28 @@ function Header() {
 
   return (
     <header className="header">
-      {/* Home isolado na esquerda */}
+      {/* Logo clicável no lado esquerdo */}
       <div className="home-container">
-        {location.pathname !== "/" && (
-          <button className="home-button" onClick={() => navigate("/")}>
-            🏠 Voltar ao inicio
-          </button>
-        )}
+        <img 
+          src={logo}
+          alt="Logo"
+          className="header-logo"
+          onClick={() => navigate("/")}
+        />
       </div>
 
       {/* Menu Aulas + Perfil na direita */}
       <div className="menu-profile-container">
-      <div className="profile-icon" onClick={() => navigate("/perfil")}>
+        <div className="profile-icon" onClick={() => navigate("/perfil")}>
           👤
         </div>
         <div style={{ position: "relative" }}>
-
           <button
             ref={buttonRef}
             className="menu-button"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            ☰ Aulas
+            ☰ Aulas  
           </button>
 
           {menuOpen && (
@@ -61,8 +61,6 @@ function Header() {
             </div>
           )}
         </div>
-
-        
       </div>
     </header>
   );

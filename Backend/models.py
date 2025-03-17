@@ -14,3 +14,4 @@ class User(Base):
     aula4 = Column(Integer, default=0)
     aula5 = Column(Integer, default=0)
     aula6 = Column(Integer, default=0)
+    photo = Column(String, nullable=True) 

@@ -48,7 +48,7 @@ function Aula1() {
           Python que vamos precisar ao longo do curso (ou que são mais utilizadas no
           nosso dia-a-dia).
         </p>
-        <img src="src/img/aula1.png" alt="Aula 1" className="aula-image" />
+        <img src="img/aula1.png" alt="Aula 1" className="aula-image" />
 
         <h2>Verdadeiro ou Falso</h2>
         <p>Marque V para verdadeiro e F para falso:</p>

@@ -9,7 +9,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from database import get_db
 from models import User
 from schemas import UserCreate, TokenResponse
-
+from sqlalchemy import or_
 
 SECRET_KEY = "GAS"
 
@@ -57,12 +57,14 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
 
 @router.post("/register")
 def register(user: UserCreate, db: Session = Depends(get_db)):
-    existing_user = db.query(User).filter(User.username == user.username).first()
+    existing_user = db.query(User).filter(
+        or_(User.username == user.username, User.email == user.email)
+    ).first()
     if existing_user:
-        raise HTTPException(status_code=400, detail="Usuário já existe")
+        raise HTTPException(status_code=400, detail="Usuário ou email já existe")
 
     hashed_password = hash_password(user.password)
-    new_user = User(username=user.username, password_hash=hashed_password)
+    new_user = User(email=user.email, username=user.username, password_hash=hashed_password)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

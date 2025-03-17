@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../../img/avatar.png";
 import "./Header.css";
 import logo from "./logo.jpg"; 
+import Registro from "../../pages/Registro/Registro.jsx"; // Caminho relativo correto
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +39,9 @@ function Header() {
 
       {/* Menu Aulas + Perfil na direita */}
       <div className="menu-profile-container">
-      <div className="profile-icon" onClick={() => navigate("/perfil")}>
+        {/* Botão de registro */}
+        <Registro />
+        <div className="profile-icon" onClick={() => navigate("/perfil")}>
           👤
         </div>
         <div style={{ position: "relative" }}>
@@ -47,7 +50,7 @@ function Header() {
             className="menu-button"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            ☰ Aulas  
+            ☰ Aulas
           </button>
 
           {menuOpen && (

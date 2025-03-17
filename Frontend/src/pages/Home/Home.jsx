@@ -14,8 +14,8 @@ function Home() {
       <div className="home-container-buttons">
   
         <div className="auth-buttons">
-          <button className="btn-login" onClick={() => navigate("/login")}>Entrar</button>
-          <button className="btn-register" onClick={() => navigate("/register")}>Registrar</button>
+          <button className="btn-login" onClick={() => navigate("/Login")}>Entrar</button>
+          <button className="btn-register" onClick={() => navigate("/Registro")}>Registrar</button>
         </div>
       </div>
 

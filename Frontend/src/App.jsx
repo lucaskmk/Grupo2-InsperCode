@@ -8,6 +8,7 @@ import Aula3 from "./pages/Aulas/Aula3";
 import Aula4 from "./pages/Aulas/Aula4";
 import Aula5 from "./pages/Aulas/Aula5";
 import Aula6 from "./pages/Aulas/Aula6";
+import Login from "./pages/Login/Login";  // Importa a página de login
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />  {/* Rota para login */}
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/aula1" element={<Aula1 />} />
         <Route path="/aula2" element={<Aula2 />} />

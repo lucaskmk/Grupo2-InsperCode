@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 import logo from "./logo.jpg"; 
+import Registro from "../Registro/Registro.jsx"; // Caminho relativo correto
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,6 +39,8 @@ function Header() {
 
       {/* Menu Aulas + Perfil na direita */}
       <div className="menu-profile-container">
+        {/* Botão de registro */}
+        <Registro />
         <div className="profile-icon" onClick={() => navigate("/perfil")}>
           👤
         </div>
@@ -47,7 +50,7 @@ function Header() {
             className="menu-button"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            ☰ Aulas  
+            ☰ Aulas
           </button>
 
           {menuOpen && (

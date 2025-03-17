@@ -7,31 +7,30 @@ function Perfil() {
   // Inicializa com a foto padrão
   const [selectedIcon, setSelectedIcon] = useState("/profile/user.webp");
 
-  // Função para atualizar a foto tanto no estado quanto no backend
-  const handleIconSelect = (icon) => {
-    setSelectedIcon(icon);
-    const token = localStorage.getItem("accessToken");
-    fetch("http://localhost:8000/api/profile/photo", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-      body: JSON.stringify({ photo: icon }),
+const handleIconSelect = (icon) => {
+  setSelectedIcon(icon);
+  const token = localStorage.getItem("accessToken");
+  fetch("http://localhost:8000/api/profile/photo", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify({ photo: icon }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Erro ao atualizar foto");
+      }
+      return res.json();
     })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Erro ao atualizar foto");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Foto atualizada:", data.photo);
-      })
-      .catch((err) => console.error(err));
-  };
+    .then((data) => {
+      console.log("Foto atualizada:", data.photo);
+      window.dispatchEvent(new CustomEvent("profileUpdated", { detail: { photo: data.photo } }));
+    })
+    .catch((err) => console.error(err));
+};
 
-  // Ao montar, busca os dados do perfil
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {

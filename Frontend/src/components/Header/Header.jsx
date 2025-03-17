@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import avatar from "../../img/avatar.png";
 import "./Header.css";
-
 import logo from "/img/logo.jpg"; 
 import Registro from "../Registro/Registro.jsx";
 
@@ -13,7 +11,7 @@ function Header() {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
-  // Busque os dados do perfil para atualizar a foto e demais informações
+  // Busca os dados do perfil para atualizar a foto e demais informações
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {
@@ -34,6 +32,19 @@ function Header() {
         .catch((err) => console.error(err));
     }
   }, []);
+
+  // Adiciona um listener para o evento "profileUpdated"
+  useEffect(() => {
+    const handleProfileUpdated = (event) => {
+      const newPhoto = event.detail.photo;
+      setUserData((prevData) => (prevData ? { ...prevData, photo: newPhoto } : prevData));
+    };
+
+    window.addEventListener("profileUpdated", handleProfileUpdated);
+    return () => window.removeEventListener("profileUpdated", handleProfileUpdated);
+  }, []);
+
+  // Fecha o dropdown se clicar fora
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -48,17 +59,18 @@ function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Se o usuário não tiver foto, usa a foto padrão
+  // Se o usuário não tiver foto, usa a foto padrão (public/profile/user.webp)
   const userPhoto = userData && userData.photo ? userData.photo : "/profile/user.webp";
 
   return (
     <header className="header">
       <div className="home-container">
-        {location.pathname !== "/" && (
-          <button className="home-button" onClick={() => navigate("/")}>
-            🏠 Voltar ao inicio
-          </button>
-        )}
+        <img 
+          src={logo}
+          alt="Logo"
+          className="header-logo"
+          onClick={() => navigate("/")}
+        />
       </div>
 
       <div className="menu-profile-container">
@@ -66,7 +78,7 @@ function Header() {
         <div className="profile-icon" onClick={() => navigate("/perfil")}>
           <img src={userPhoto} alt="Foto do Usuário" className="user-photo" />
         </div>
-        <div className="dropdown-wrapper" style={{ position: "relative" }}>
+        <div className="dropdown-wrapper">
           <button
             ref={buttonRef}
             className="menu-button"
@@ -84,7 +96,6 @@ function Header() {
               <p onClick={() => navigate("/aula6")}>📖 Aula 6</p>
             </div>
           )}
-          
         </div>
       </div>
     </header>

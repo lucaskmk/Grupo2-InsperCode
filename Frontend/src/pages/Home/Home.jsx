@@ -1,5 +1,5 @@
 import "./Home.css";
-import logo from "../../img/logo.jpg";
+import logo from "/img/logo.jpg"; 
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
   
         <div className="auth-buttons">
           <button className="btn-login" onClick={() => navigate("/Login")}>Entrar</button>
-          <button className="btn-register" onClick={() => navigate("/Registro")}>Registrar</button>
+          <button className="btn-register" onClick={() => navigate("/Login")}>Registrar</button>
         </div>
       </div>
 

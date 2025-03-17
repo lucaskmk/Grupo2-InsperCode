@@ -6,7 +6,6 @@
   background: #f43636;
   color: white;
   padding: 0.625rem 1.25rem;
-  /* Removemos margin-bottom para não afetar o layout */
   display: flex;
   justify-content: space-between;
   align-items: center;

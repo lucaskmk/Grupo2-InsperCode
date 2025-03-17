@@ -32,8 +32,6 @@ function Header() {
         .catch((err) => console.error(err));
     }
   }, []);
-
-  // Para fechar o dropdown se clicar fora
   useEffect(() => {
     function handleClickOutside(event) {
       if (

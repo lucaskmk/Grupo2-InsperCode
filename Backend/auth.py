@@ -135,3 +135,4 @@ def update_profile_photo(data: dict, token: str = Depends(oauth2_scheme), db: Se
     db.refresh(user)
     return {"message": "Foto atualizada com sucesso", "photo": user.photo}
 
+#======================

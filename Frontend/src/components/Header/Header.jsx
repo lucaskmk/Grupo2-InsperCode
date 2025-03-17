@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import avatar from "../../img/avatar.png";
 import "./Header.css";
+
 import logo from "/img/logo.jpg"; 
 import Registro from "../Registro/Registro.jsx";
 
@@ -52,12 +54,11 @@ function Header() {
   return (
     <header className="header">
       <div className="home-container">
-        <img 
-          src={logo}
-          alt="Logo"
-          className="header-logo"
-          onClick={() => navigate("/")}
-        />
+        {location.pathname !== "/" && (
+          <button className="home-button" onClick={() => navigate("/")}>
+            🏠 Voltar ao inicio
+          </button>
+        )}
       </div>
 
       <div className="menu-profile-container">
@@ -83,6 +84,7 @@ function Header() {
               <p onClick={() => navigate("/aula6")}>📖 Aula 6</p>
             </div>
           )}
+          
         </div>
       </div>
     </header>

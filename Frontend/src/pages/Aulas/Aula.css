@@ -1,10 +1,37 @@
-.page {
+/* Aula.css */
+
+.page.aula-page {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Para evitar que o conteúdo fique muito alto */
+  justify-content: flex-start !important;  /* não centralizar verticalmente */
   align-items: center;
   text-align: center;
-  min-height: calc(100vh - 70px); /* Ajusta para considerar o header */
-  width: 98%;
-  padding: 20px;
+  width: 100%;
+  padding: 1.25rem;              /* equivale a 20px */
+  padding-top: 4rem;             /* diminuiu de 5rem (80px) para 4rem */
+  height: auto !important;       /* remove a altura fixa de 100vh */
+  box-sizing: border-box;
+  overflow-x: hidden;            /* evita scroll horizontal */
+}
+
+/* Container centralizado para limitar a largura */
+.content-container {
+  width: 100%;
+  max-width: 75rem;              /* aproximadamente 1200px (se 1rem = 16px) */
+  margin: 0 auto;
+  padding: 0 1.25rem;            /* equivale a 20px de padding lateral */
+  box-sizing: border-box;
+}
+
+/* A imagem da aula se adapta à largura do container */
+.aula-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.25rem auto;          /* centraliza e espaça a imagem (20px ≈ 1.25rem) */
+}
+
+/* Espaçamento entre as perguntas (opcional) */
+.question {
+  margin-bottom: 0.625rem;       /* equivale a 10px */
 }

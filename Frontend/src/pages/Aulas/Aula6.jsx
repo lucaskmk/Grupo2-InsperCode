@@ -1,5 +1,5 @@
 import "./Aula.css";
-
+import Traducao from "../../components/Traducao/Traducao";
 function Aula6() {
   return (
     <div className="page">

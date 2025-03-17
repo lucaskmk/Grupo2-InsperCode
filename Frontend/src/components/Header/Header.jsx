@@ -2,15 +2,38 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import avatar from "../../img/avatar.png";
 import "./Header.css";
-import logo from "./logo.jpg"; 
-import Registro from "../../pages/Registro/Registro.jsx"; // Caminho relativo correto
+
+import logo from "/img/logo.jpg"; 
+import Registro from "../Registro/Registro.jsx";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
+  // Busque os dados do perfil para atualizar a foto e demais informações
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      fetch("http://localhost:8000/api/profile", {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Falha ao obter dados do perfil");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setUserData(data);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, []);
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -21,14 +44,15 @@ function Header() {
         setMenuOpen(false);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Se o usuário não tiver foto, usa a foto padrão
+  const userPhoto = userData && userData.photo ? userData.photo : "/profile/user.webp";
+
   return (
     <header className="header">
-      {/* Logo clicável no lado esquerdo */}
       <div className="home-container">
         {location.pathname !== "/" && (
           <button className="home-button" onClick={() => navigate("/")}>
@@ -37,14 +61,12 @@ function Header() {
         )}
       </div>
 
-      {/* Menu Aulas + Perfil na direita */}
       <div className="menu-profile-container">
-        {/* Botão de registro */}
         <Registro />
         <div className="profile-icon" onClick={() => navigate("/perfil")}>
-          👤
+          <img src={userPhoto} alt="Foto do Usuário" className="user-photo" />
         </div>
-        <div style={{ position: "relative" }}>
+        <div className="dropdown-wrapper" style={{ position: "relative" }}>
           <button
             ref={buttonRef}
             className="menu-button"
@@ -52,7 +74,6 @@ function Header() {
           >
             ☰ Aulas
           </button>
-
           {menuOpen && (
             <div className="dropdown-menu" ref={menuRef}>
               <p onClick={() => navigate("/aula1")}>📖 Aula 1</p>

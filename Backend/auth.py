@@ -10,8 +10,20 @@ from database import get_db
 from models import User
 from schemas import UserCreate, TokenResponse
 from sqlalchemy import or_
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from database import get_db
+from models import User
+from schemas import UserCreate, TokenResponse
+from sqlalchemy import or_
+import hashlib, hmac, datetime, base64, json
 
 SECRET_KEY = "GAS"
+
+router = APIRouter()  # Defina o router antes de usá-lo
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
 
 def encode_token(data: dict, expires_delta: datetime.timedelta):
     to_encode = data.copy()
@@ -84,3 +96,43 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 def protected_route(token: str = Depends(oauth2_scheme)):
     payload = decode_token(token)
     return {"message": f"Acesso autorizado para {payload['sub']}"}
+
+@router.get("/profile")
+def get_profile(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+    payload = decode_token(token)
+    username = payload.get("sub")
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado")
+    return {
+        "username": user.username,
+        "photo": user.photo,  # Pode ser None se não definido
+        "pontuacoes": {
+            "aula1": user.aula1,
+            "aula2": user.aula2,
+            "aula3": user.aula3,
+            "aula4": user.aula4,
+            "aula5": user.aula5,
+            "aula6": user.aula6,
+        }
+    }
+
+@router.put("/profile/photo")
+def update_profile_photo(data: dict, token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+    # Espera um JSON com {"photo": "caminho_da_nova_foto"}
+    new_photo = data.get("photo")
+    if not new_photo:
+        raise HTTPException(status_code=400, detail="Nenhuma foto fornecida")
+
+    payload = decode_token(token)
+    username = payload.get("sub")
+    user = db.query(User).filter(User.username == username).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado")
+
+    user.photo = new_photo
+    db.commit()
+    db.refresh(user)
+    return {"message": "Foto atualizada com sucesso", "photo": user.photo}
+
+#======================

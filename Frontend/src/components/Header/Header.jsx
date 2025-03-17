@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import avatar from "../../img/avatar.png";
 import "./Header.css";
 
 function Header() {
@@ -35,11 +36,12 @@ function Header() {
         )}
       </div>
 
+      <div className="profile-icon"  onClick={() => navigate("/perfil") }>
+            <img src={avatar} alt="Avatar" className="avatar" />
+          </div>
+
       {/* Menu Aulas + Perfil na direita */}
       <div className="menu-profile-container">
-      <div className="profile-icon" onClick={() => navigate("/perfil")}>
-          👤
-        </div>
         <div style={{ position: "relative" }}>
 
           <button
@@ -60,6 +62,7 @@ function Header() {
               <p onClick={() => navigate("/aula6")}>📖 Aula 6</p>
             </div>
           )}
+          
         </div>
 
         

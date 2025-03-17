@@ -67,6 +67,17 @@
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajuste do Avatar dentro da div profile-icon */
+.profile-icon .avatar {
+  width: 2.5rem; /* Ajuste o tamanho conforme necessário */
+  height: 2.5rem; /* Ajuste o tamanho conforme necessário */
+  border-radius: 50%; /* Torna as bordas arredondadas */
+  object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
 }
 
 /* Ajuste para posicionar o dropdown exatamente abaixo do botão */

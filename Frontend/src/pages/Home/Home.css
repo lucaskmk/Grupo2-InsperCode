@@ -1,8 +1,60 @@
 .home {
   text-align: center;
   margin-top: 80px; /* Garante espaço para o header */
-  color: white;
-  background-color: #222;
+  color: #900B09;
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
 }
+
+/* Container dos botões */
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem; /* Distância entre o texto e os botões */
+}
+
+/* Estilo para os botões */
+.auth-buttons button {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.3125rem; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo para o botão Entrar */
+.btn-login {
+  background-color: #FC7A70;
+  color: white;
+}
+
+.btn-login:hover {
+  background-color: #ea2719;
+}
+
+/* Estilo para o botão Registrar */
+.btn-register {
+  background-color: #A1A1A1;
+  color: white;
+}
+
+.btn-register:hover {
+  background-color: #5c5c5c;
+}
+
+.home {
+  /* Seu estilo existente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.youtube-player {
+  text-align:center;
+  margin-top: 100px;
+}
+

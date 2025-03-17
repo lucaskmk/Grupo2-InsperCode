@@ -7,6 +7,7 @@ function Perfil() {
   // Inicializa com a foto padrão
   const [selectedIcon, setSelectedIcon] = useState("/profile/user.webp");
 
+  // Função para atualizar a foto tanto no estado quanto no backend
   const handleIconSelect = (icon) => {
     setSelectedIcon(icon);
     const token = localStorage.getItem("accessToken");
@@ -30,6 +31,7 @@ function Perfil() {
       .catch((err) => console.error(err));
   };
 
+  // Ao montar, busca os dados do perfil
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {

@@ -1,0 +1,29 @@
+.gallery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .gallery-image {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+  }
+  
+  .arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    color: #f43636;
+    transition: color 0.3s;
+  }
+  
+  .arrow:hover {
+    color: #d32f2f;
+  }
+  

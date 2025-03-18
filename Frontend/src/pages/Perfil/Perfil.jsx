@@ -74,10 +74,12 @@ const handleIconSelect = (icon) => {
 
   // Ícones disponíveis (localizados em public/profile/)
   const availableIcons = [
-    "/profile/user1.png",
-    "/profile/user2.png",
-    "/profile/user3.png",
-    "/profile/user4.png",
+    "/profile/user.jpeg",
+    "/profile/user_1.jpeg",
+    "/profile/user_2.jpeg",
+    "/profile/user_3.jpeg",
+    "/profile/user_4.jpeg",
+    "/profile/user_5.jpeg",
   ];
 
   return (

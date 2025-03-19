@@ -1,5 +1,76 @@
 /* Aula.css */
+label {
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: bold; /* Texto em negrito */
+  color: #333; /* Cor do texto */
+  margin-bottom: 0.5rem; /* Espaçamento inferior */
+  display: block; /* Garante que o label fique acima do input */
+  text-transform: capitalize; /* Primeira letra maiúscula */
+  letter-spacing: 0.5px; /* Espaçamento entre letras */
+  transition: color 0.3s ease; /* Transição suave para a cor */
+}
 
+label:hover {
+  color: #555; /* Cor mais escura ao passar o mouse */
+}
+/* Adiciona um gradiente de fundo para a página */
+body {
+  background: linear-gradient(135deg, #ffffff, #ffc4c4); /* Gradiente roxo para azul */
+  font-family: 'Arial', sans-serif; /* Fonte limpa e moderna */
+  color: #000000; /* Texto branco para contraste */
+  margin: 0;
+  padding: 0;
+}
+
+/* Adiciona uma sombra sutil ao container */
+.content-container {
+  background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  border-radius: 12px; /* Bordas arredondadas */
+  padding: 2rem; /* Espaçamento interno maior */
+}
+
+/* Estiliza os botões */
+button {
+  background-color: #ffffff; /* Azul vibrante */
+  color: #000000; /* Texto branco */
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffffff; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Adiciona animação ao código */
+code {
+  transition: transform 0.2s ease;
+}
+
+code:hover {
+  transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+}
+
+/* Estiliza os títulos */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+}
+
+/* Adiciona animação ao passar o mouse nas imagens */
+.aula-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aula-image:hover {
+  transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+}
 .page.aula-page {
   display: flex;
   flex-direction: column;
@@ -13,7 +84,17 @@
   box-sizing: border-box;
   overflow-x: hidden;            /* evita scroll horizontal */
 }
-
+/* Estilo adicional para destacar o código */
+code {
+  background-color: #1e1e1e; /* Fundo mais escuro para contraste */
+  color: #dcdcaa; /* Cor do texto em amarelo suave */
+  padding: 0.2rem 0.4rem; /* Espaçamento interno para destacar */
+  border-radius: 4px; /* Bordas levemente arredondadas */
+  font-size: 0.95rem; /* Tamanho levemente menor */
+  font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada */
+  white-space: pre-wrap; /* Permite quebra de linha */
+  word-wrap: break-word; /* Quebra palavras longas */
+}
 /* Container centralizado para limitar a largura */
 .content-container {
   width: 100%;
@@ -46,13 +127,5 @@ pre {
   width: 100%; /* Largura total disponível */
   margin: 20px auto; /* Centraliza o bloco e adiciona margem superior e inferior */
   font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada */
-  text-align: left;
-}
-
-/* Estilo para o código dentro do bloco (code) */
-code {
-  font-size: 1rem; /* Tamanho da fonte */
-  font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada */
-  color: #f5f5f5; /* Cor do texto */
   text-align: left;
 }
